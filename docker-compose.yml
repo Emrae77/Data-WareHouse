@@ -1,0 +1,22 @@
+version: '3'
+services:
+  progress-softdb:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "dev"
+      POSTGRES_DB: "progress-softdb"
+    ports:
+      - "5432:5432"
+  progress-soft:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      HOST: progress-softdb
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "dev"
+      DATABASE_SERVER_PORT: "5432"
+    depends_on:
+      - progress-softdb

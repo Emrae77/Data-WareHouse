@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: progresssoft
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+
+  h2:
+    console:
+      path: /h2
+      enabled: true
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  servlet:
+    context-path: /api/v1
+  port: 8080
